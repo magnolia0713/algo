@@ -2,7 +2,7 @@ from heapq import heappop, heappush
 import sys
 input = sys.stdin.readline
 n, m, k = map(int, input().split())
-inf = 1e12
+inf = 1e11
 dp = [[inf] * (n+1) for _ in range(k+1)]
 for i in range(k+1):
     dp[i][1] = 0
@@ -45,10 +45,11 @@ def dijkstra():
 
             if level < k and dp[level+1][next_node] > weight:
                 dp[level+1][next_node] = weight
+                for i in range(level+2, k+1):
+                    if dp[i][next_node] > weight:
+                        dp[i][next_node] = weight
                 heappush(pq, (weight, next_node, level+1))
 
 ans = dijkstra()
 #print(dp)
 print(ans)
-
-
