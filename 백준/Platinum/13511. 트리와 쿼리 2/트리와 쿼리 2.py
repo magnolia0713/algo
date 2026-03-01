@@ -1,5 +1,8 @@
 # 트리와 쿼리 2
 # 문제 핵심 : binary lifting(트리의 이진탐색 버전, 일종의 dp)
+import sys
+
+input = sys.stdin.readline
 n = int(input())
 
 max_length = n.bit_length()
