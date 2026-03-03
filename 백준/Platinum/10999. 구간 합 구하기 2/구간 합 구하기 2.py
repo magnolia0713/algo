@@ -1,5 +1,5 @@
-import sys
-input = sys.stdin.readline
+import io
+input = io.BufferedReader(io.FileIO(0), buffer_size=1<<18).readline
 
 n, m, k = map(int, input().split())
 
