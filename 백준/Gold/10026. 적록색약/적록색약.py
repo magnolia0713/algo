@@ -1,14 +1,13 @@
 import sys
 sys.setrecursionlimit(100000)
 
-def dfs(r, c):
+def dfs(r, c, color):
     check_list[r][c] = False
-    if color == matrix[r][c]:
-        for dr, dc in dir:
-            nr = r + dr
-            nc = c + dc
-            if 0 <= nr < N and 0 <= nc < N and matrix[nr][nc] == color and check_list[nr][nc]:
-                dfs(nr,nc)
+    for dr, dc in dir:
+        nr = r + dr
+        nc = c + dc
+        if 0 <= nr < N and 0 <= nc < N and matrix[nr][nc] == color and check_list[nr][nc]:
+            dfs(nr,nc,color)
     return
 
 N = int(input())
@@ -21,7 +20,7 @@ for r in range(N):
     for c in range(N):
         color = matrix[r][c]
         if check_list[r][c]:
-            dfs(r,c)
+            dfs(r,c,color)
             counter_a += 1
 print(counter_a, end=' ')
 #색약
@@ -37,6 +36,6 @@ for r in range(N):
     for c in range(N):
         color = matrix[r][c]
         if check_list[r][c]:
-            dfs(r,c)
+            dfs(r,c,color)
             counter_b += 1
 print(counter_b)
