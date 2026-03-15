@@ -45,5 +45,5 @@ memo = [0]*21
 print(dp(N))
 result = dp_2(N)
 
-for i in result:
-    print(*i)
+trimmed = '\n'.join(f"{a} {b}" for a, b in result)
+print(trimmed)
