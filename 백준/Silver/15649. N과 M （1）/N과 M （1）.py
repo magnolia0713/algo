@@ -1,19 +1,31 @@
+import copy
 N, M = map(int, input().split())
-num_list = list(range(1,N+1))
-check_list = [0] * N
+
 list_a = []
+list_b = []
 
-def dfs():
-    if len(list_a) == M:
-        print(*list_a)
+def NM1(N, M):
+    
+    global list_a
+    global list_b
+    if list_a == []:
+        list_a = [[i] for i in range(1,N+1)]
+        M -= 1
+
+    if M == 0:
         return
+    else:
+        for num in list_a:
+            for i in range(1, N+1):
+                if i not in num:
+                    num_1 = num + [i]
+                    list_b.append(num_1)
+        list_a = copy.deepcopy(list_b)
+        list_b.clear()
 
-    for i in range(len(num_list)):
-        if check_list[i] == 0:
-            list_a.append(num_list[i])
-            check_list[i] = 1
-            dfs()
-            check_list[i] = 0
-            list_a.pop()
+        return NM1(N, M-1)
 
-dfs()
+NM1(N, M)
+
+for list_a in list_a:
+    print(*list_a)
