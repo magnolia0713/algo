@@ -18,7 +18,7 @@ n = int(input())
 memo = [0] * (n+1)
 graph = [[] for _ in range(n+1)]
 lines = [-1] * (n+1)
-lines[1] = -500000
+lines[1] = -5
 dist = [-1] * (n+1)
 dist[1] = 0
 
