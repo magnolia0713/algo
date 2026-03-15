@@ -1,3 +1,4 @@
+
 import heapq, sys
 
 input = sys.stdin.readline
@@ -13,9 +14,6 @@ def dijkstra(start):
 
     while basket:
         cost, p = heappop(basket)
-
-        if memo[p] != cost:
-            continue
 
         for i in line_matrix[p]:
             value, key = i[0], i[1]
