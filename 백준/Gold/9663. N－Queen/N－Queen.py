@@ -1,29 +1,28 @@
+def iamqueen(level):
+    global count
 
+    if level == N:
+        count += 1
 
-def dfs(depth):
-    global total_count
+    for c in range(N):
+        if c in queen_c:
+            for n, m in visited:
+                if level + c == n + m:
+                    break
+                if level - n == c - m:
+                    break
 
-    if depth == n:
-        total_count += 1
-        return
+            else:
+                queen_c.remove(c)
+                visited.add((level,c))
+                iamqueen(level+1)
+                visited.remove((level,c))
+                queen_c.add(c)
 
-    for i in range(len(num_list)):
-        p = num_list[i]
-        if depth + p not in plus_dir and depth - p not in minus_dir:
-            plus_dir.add(depth + p)
-            minus_dir.add(depth - p)
-            temp = num_list.pop(i)
-            dfs(depth + 1)
-            num_list.insert(i, temp)
-            plus_dir.remove(depth + p)
-            minus_dir.remove(depth - p)
+N = int(input())
+visited = set()
+queen_c = set(range(N))
+count = 0
+iamqueen(0)
 
-
-
-n = int(input())
-total_count = 0
-num_list = list(range(0, n))
-plus_dir = set()
-minus_dir = set()
-dfs(0)
-print(total_count)
+print(count)
