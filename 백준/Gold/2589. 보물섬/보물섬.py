@@ -6,19 +6,12 @@ dir = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 max_a = 0
 for r in range(N):
     for c in range(M):
-        if r-1 >= 0 and r+1 < N and  c-1 >= 0 and c+1 < M:
-            min_counter = 0
-            if matrix[r+1][c] == 'L':
-                min_counter +=1
-            if matrix[r-1][c] == 'L':
-                min_counter +=1
-            if matrix[r][c+1] == 'L':
-                min_counter +=1
-            if matrix[r][c-1] == 'L':
-                min_counter +=1
-            if min_counter > 2:
+        if r-1 >= 0 and r+1 < N:
+            if matrix[r+1][c] == 'L' and matrix[r-1][c] == 'L':
                 continue
-
+        if c-1 >= 0 and c+1 < M:
+            if matrix[r][c+1] == 'L' and matrix[r][c-1] == 'L':
+                continue
         if matrix[r][c] == 'L':
             basket = deque([(r, c)])
             distance = [[-1] * M for _ in range(N)]
